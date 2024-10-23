@@ -29,10 +29,10 @@ app.get('/', (req, res) => {
 // user register
 
 app.post('/api/register', async (req, res) => {
-    const { name, mobile, password } = req.body;
+    const { fullName, mobile, password } = req.body;
     try {
         const newUser = new User({
-            name, mobile, password
+            fullName, mobile, password
         })
         const saveUser = await newUser.save();
         res.json({
@@ -53,7 +53,7 @@ app.post('/api/register', async (req, res) => {
 
 app.post('/api/login', async (req, res) => {
     const { mobile, password } = req.body;
-    const findUser = await User.findOne({ password, mobile }).select('name mobile')
+    const findUser = await User.findOne({ password, mobile }).select('fullName mobile')
 
     if (findUser == null) {
         return res.json({
