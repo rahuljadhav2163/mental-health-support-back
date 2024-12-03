@@ -16,7 +16,7 @@ const MongoDBConn = async () => {
         console.log('MongoDB connected');
     } catch (e) {
         console.log(`Error: ${e.message}`);
-        process.exit(1); // Stop the server if the connection fails
+        process.exit(1); 
     }
 };
 MongoDBConn();
@@ -49,7 +49,7 @@ app.post('/api/register', async (req, res) => {
     }
 })
 
-// user login
+
 
 app.post('/api/login', async (req, res) => {
     const { mobile, password } = req.body;
